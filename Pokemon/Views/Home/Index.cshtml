@@ -1,0 +1,28 @@
+﻿<div ng-app="app">
+    <div ng-controller="HomeController">
+        <input type="text" ng-model="pokemon.name" />
+        <input type="text" ng-model="pokemon.type" />
+        <button ng-click="addPokemon(pokemon)">Add Pokemon</button>
+        <table class="table table-bordered table-responsive">
+            <tr ng-repeat="pokemon in pokemons">
+                <td>
+                    <span ng-hide="editing">{{pokemon.Name}}</span>
+                    <input type="text" ng-model="pokemon.Name" ng-hide="!editing" />
+                </td>
+                <td>
+                    <span ng-hide="editing">{{pokemon.Type}}</span>
+                    <input type="text" ng-model="pokemon.Type" ng-hide="!editing" />
+                </td>
+                <td>
+                    <button ng-click="editing = true" ng-hide="editing">Edit</button>
+                    <button ng-click="editing = false; savePokemon(pokemon);" ng-hide="!editing">Save</button>
+                    <button ng-click="editing = false; getAllPokemon();" ng-hide="!editing">Cancel</button>
+                    <button ng-click="deletePokemon(pokemon)" ng-hide="editing">Delete</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <script src="~/App/Scripts/angular.js"></script>
+    <script src="~/App/Scripts/main.js"></script>
+</div>
